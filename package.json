@@ -1,0 +1,46 @@
+{
+  "scripts": {
+    "build": "ncc build src/cli/index.ts --minify --out dist",
+    "start": "ncc run src/cli/index.ts",
+    "test": "eslint --ext .ts src"
+  },
+  "engine": {
+    "node": ">=12.3.0"
+  },
+  "dependencies": {
+    "bottleneck": "^2.19.5",
+    "commander": "^4.1.0",
+    "csv-stringify": "^5.3.6",
+    "got": "^10.2.2",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@types/node": "^13.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
+    "@typescript-eslint/parser": "^2.2.0",
+    "@zeit/ncc": "^0.21.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^4.0.6",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.19.1",
+    "typescript": "^3.6.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
+  }
+}
